@@ -46,26 +46,26 @@ lib/
 
 ---
 
-## MVC Pattern - কোন ফাইল কোথায় রাখবো?
+## MVC Pattern - Where to Place Each File?
 
 ### Model (`lib/models/`)
-- Data class / entity রাখবো এখানে
-- API response model, local data model
+- Place data classes and entities here
+- API response models, local data models
 - Example: `user_model.dart`, `schedule_model.dart`
 
 ### View (`lib/views/`)
-- সব UI screen এখানে থাকবে
-- শুধু UI render করবে, business logic থাকবে না
+- All UI screens go here
+- Only renders UI — no business logic
 - Example: `home_screen.dart`, `login_view.dart`
 
 ### Controller (`lib/controllers/`)
-- Business logic ও state management এখানে
-- GetX Controller extend করে বানাবো
-- View থেকে data fetch, update, delete সব controller handle করবে
+- Business logic and state management go here
+- Create by extending GetX Controller
+- Handles all data fetch, update, and delete operations from the View
 - Example: `home_controller.dart`, `auth_controller.dart`
 
 ### Core (`lib/core/`)
-- **Reusable/shared widgets** যেগুলো multiple screen এ ব্যবহার হয়
+- **Reusable/shared widgets** used across multiple screens
 - App-wide common components
 - Example: `custom_navgation.dart`, `assets.gen.dart`
 
@@ -82,33 +82,33 @@ lib/
 lib/core/custom_navgation.dart
 ```
 
-### MVC তে এই ফাইল কোথায় বসে?
-এটি **`core/`** ফোল্ডারে আছে কারণ এটি একটি **reusable UI component (View layer)**। এটি কোনো specific screen না — বরং এটি **একাধিক screen এ ব্যবহারযোগ্য common widget**। তাই এটি `views/` তে না রেখে `core/` তে রাখা হয়েছে।
+### Where Does This File Fit in MVC?
+It resides in the **`core/`** folder because it is a **reusable UI component (View layer)**. It is not a specific screen — rather, it is a **common widget used across multiple screens**. That's why it is placed in `core/` instead of `views/`.
 
-> **Rule:** যদি কোনো widget শুধু একটি screen এ ব্যবহার হয়, তাহলে `views/` এ রাখো। যদি **multiple screen এ share** হয়, তাহলে `core/` তে রাখো।
+> **Rule:** If a widget is used in only one screen, place it in `views/`. If it is **shared across multiple screens**, place it in `core/`.
 
-### এই ফাইলে কী আছে?
+### What Does This File Contain?
 
 #### 1. `CustomNavigationBar` (StatefulWidget)
-Bottom navigation bar — animated, icon + label সহ।
+An animated bottom navigation bar with icons and labels.
 
 **Properties:**
 
-| Property       | Type                | Description                          |
-| -------------- | ------------------- | ------------------------------------ |
-| `currentIndex` | `int`               | বর্তমানে কোন tab selected           |
-| `onTap`        | `ValueChanged<int>` | Tab tap করলে parent কে notify করে   |
+| Property       | Type                | Description                              |
+| -------------- | ------------------- | ---------------------------------------- |
+| `currentIndex` | `int`               | Currently selected tab index             |
+| `onTap`        | `ValueChanged<int>` | Notifies parent when a tab is tapped     |
 
 **Features:**
-- 4টি navigation item: **Home**, **Quests**, **Progress**, **Dashboard**
-- Selected item এ animated highlight (হলুদ background with `Color(0xFFFFE5B4)`)
-- `AnimatedContainer` দিয়ে smooth transition
-- `GetBuilder<LanguageController>` দিয়ে multi-language support (`.tr`)
-- Asset icon ব্যবহারের জন্য FlutterGen (`Assets.images.*`)
+- 4 navigation items: **Home**, **Quests**, **Progress**, **Dashboard**
+- Animated highlight on selected item (yellow background with `Color(0xFFFFE5B4)`)
+- Smooth transition using `AnimatedContainer`
+- Multi-language support via `GetBuilder<LanguageController>` (`.tr`)
+- Asset icons via FlutterGen (`Assets.images.*`)
 
-**কোথায় ব্যবহার হচ্ছে?**
+**Usage:**
 ```dart
-// home_screen.dart ও home.dart এ:
+// Used in home_screen.dart and home.dart:
 bottomNavigationBar: CustomNavigationBar(
   currentIndex: 0,
   onTap: (index) {
@@ -118,7 +118,7 @@ bottomNavigationBar: CustomNavigationBar(
 ```
 
 #### 2. `LanguageController` (GetxController)
-App এর language/locale handle করার জন্য ছোট controller।
+A small controller for handling the app's language/locale.
 
 ```dart
 class LanguageController extends GetxController {
@@ -129,7 +129,7 @@ class LanguageController extends GetxController {
 }
 ```
 
-> **Note:** `LanguageController` টি ideally `lib/controllers/` ফোল্ডারে আলাদা ফাইলে রাখা উচিত (MVC best practice অনুযায়ী), কারণ এটি একটি **Controller**। ভবিষ্যতে refactor করার সময় এটি `lib/controllers/language_controller.dart` এ move করা ভালো হবে।
+> **Note:** Ideally, `LanguageController` should be placed in a separate file inside `lib/controllers/` (following MVC best practices), since it is a **Controller**. During future refactoring, it should be moved to `lib/controllers/language_controller.dart`.
 
 ### Flow Diagram
 
@@ -183,11 +183,12 @@ flutter run
 
 ## MVC Summary Table
 
-| Layer          | Folder              | কী রাখবো                                    |
+| Layer          | Folder              | What to Place Here                           |
 | -------------- | ------------------- | -------------------------------------------- |
-| **Model**      | `lib/models/`       | Data class, API response model               |
+| **Model**      | `lib/models/`       | Data classes, API response models            |
 | **View**       | `lib/views/`        | Screen UI (Scaffold, widgets)                |
 | **Controller** | `lib/controllers/`  | GetxController, business logic, state mgmt   |
 | **Core**       | `lib/core/`         | Shared widgets, reusable components          |
 | **Utils**      | `lib/utils/`        | Helpers, constants, text styles              |
+# shishir-task
 # shishir-task
