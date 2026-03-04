@@ -3,15 +3,15 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import ' views/home_screen/home_screen.dart';
 
-// void main() {
-//   runApp(const MyApp());
-// }
-void main() => runApp(
-  DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => MyApp(), // Wrap your app
-  ),
-);
+void main() {
+  runApp(const MyApp());
+}
+// void main() => runApp(
+//   DevicePreview(
+//     enabled: !kReleaseMode,
+//     builder: (context) => MyApp(),
+//   ),
+// );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
