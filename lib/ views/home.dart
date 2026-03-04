@@ -36,9 +36,7 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: CustomNavigationBar(
         currentIndex: 0,
-        onTap: (index) {
-          // Handle navigation tap if needed
-        },
+        onTap: (index) {},
       ),
     );
   }
@@ -260,18 +258,7 @@ class _HomeState extends State<Home> {
               height: 152,
               // fit: BoxFit.cover,
             ),
-            // ClipRRect(
-            //   borderRadius: const BorderRadius.only(
-            //     topLeft: Radius.circular(16),
-            //     bottomLeft: Radius.circular(16),
-            //   ),
-            //   child: Image.asset(
-            //     Assets.images.mean.path,
-            //     width: 170,
-            //     height: 190,
-            //     fit: BoxFit.cover,
-            //   ),
-            // ),
+
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
@@ -302,31 +289,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      // SizedBox(
-                      //   width: double.infinity,
-                      //   child: OutlinedButton(
-                      //     onPressed: () {},
-                      //     style: OutlinedButton.styleFrom(
-                      //       foregroundColor: const Color(0xFF1565C0),
-                      //       side: const BorderSide(
-                      //         color: Color(0xFF1565C0),
-                      //         width: 1.5,
-                      //       ),
-                      //       shape: RoundedRectangleBorder(
-                      //         borderRadius: BorderRadius.circular(10),
-                      //       ),
-                      //       padding: const EdgeInsets.symmetric(vertical: 12),
-                      //     ),
-                      //     child: Text(
-                      //       'Calculate Now',
-                      //       style: GoogleFonts.mulish(
-                      //         fontSize: 15,
-                      //         fontWeight: FontWeight.w700,
-                      //         color: const Color(0xFF1565C0),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
+
                       SizedBox(
                         height: 40,
                         width: double.infinity,
